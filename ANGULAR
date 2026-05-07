@@ -1,0 +1,405 @@
+# Create Angular Application with 4 Components (STEP BY STEP)
+
+We will create:
+
+1. Home Component
+2. About Component
+3. Contact Component
+4. Services Component
+
+---
+
+# STEP 1 — Install NodeJS
+
+Check installation:
+
+```bash
+node -v
+```
+
+Check npm:
+
+```bash
+npm -v
+```
+
+---
+
+# STEP 2 — Install Angular CLI
+
+Open terminal in VS Code.
+
+Run:
+
+```bash
+npm install -g @angular/cli
+```
+
+Check:
+
+```bash
+ng version
+```
+
+---
+
+# STEP 3 — Create Angular Project
+
+Run:
+
+```bash
+ng new myapp
+```
+
+It asks:
+
+```text
+Would you like to add Angular routing?
+```
+
+Type:
+
+```text
+y
+```
+
+Then:
+
+```text
+Which stylesheet format?
+```
+
+Choose:
+
+```text
+CSS
+```
+
+---
+
+# STEP 4 — Open Project
+
+```bash
+cd myapp
+```
+
+Open in VS Code:
+
+```bash
+code .
+```
+
+---
+
+# STEP 5 — Create 4 Components
+
+Run these commands ONE BY ONE:
+
+```bash
+ng generate component home
+```
+
+```bash
+ng generate component about
+```
+
+```bash
+ng generate component contact
+```
+
+```bash
+ng generate component services
+```
+
+Shortcut:
+
+```bash
+ng g c home
+ng g c about
+ng g c contact
+ng g c services
+```
+
+---
+
+# STEP 6 — Open `src/app/app.html`
+
+DELETE everything inside.
+
+Paste this:
+
+```html
+<h1 align="center">Angular Application</h1>
+
+<hr>
+
+<app-home></app-home>
+
+<hr>
+
+<app-about></app-about>
+
+<hr>
+
+<app-contact></app-contact>
+
+<hr>
+
+<app-services></app-services>
+```
+
+---
+
+# STEP 7 — Open Home Component
+
+File:
+
+```text
+src/app/home/home.html
+```
+
+Paste:
+
+```html
+<h2>Home Component</h2>
+
+<p>Welcome to Angular Home Page</p>
+```
+
+---
+
+# STEP 8 — Open About Component
+
+File:
+
+```text
+src/app/about/about.html
+```
+
+Paste:
+
+```html
+<h2>About Component</h2>
+
+<p>This is About Page</p>
+```
+
+---
+
+# STEP 9 — Open Contact Component
+
+File:
+
+```text
+src/app/contact/contact.html
+```
+
+Paste:
+
+```html
+<h2>Contact Component</h2>
+
+<p>Email: test@gmail.com</p>
+```
+
+---
+
+# STEP 10 — Open Services Component
+
+File:
+
+```text
+src/app/services/services.html
+```
+
+Paste:
+
+```html
+<h2>Services Component</h2>
+
+<ul>
+  <li>Web Development</li>
+  <li>Angular Development</li>
+  <li>UI Design</li>
+</ul>
+```
+
+---
+
+# STEP 11 — RUN APPLICATION
+
+Open terminal.
+
+Run:
+
+```bash
+ng serve
+```
+
+OR
+
+```bash
+ng serve --open
+```
+
+---
+
+# STEP 12 — Open Browser
+
+Open:
+
+```text
+http://localhost:4200
+```
+
+You will see all 4 components.
+
+---
+
+# PROJECT STRUCTURE
+
+```text
+myapp
+│
+└── src
+    └── app
+        ├── home
+        ├── about
+        ├── contact
+        ├── services
+        ├── app.html
+        └── app.ts
+```
+
+---
+
+# IMPORTANT VIVA QUESTIONS
+
+## What is Angular?
+
+Frontend framework developed by [Google Angular](https://angular.dev?utm_source=chatgpt.com)
+
+---
+
+## What is Component?
+
+Reusable part of UI.
+
+---
+
+## What is Angular CLI?
+
+Command line tool for Angular.
+
+---
+
+## Command to Create Angular Project
+
+```bash
+ng new projectname
+```
+
+---
+
+## Command to Create Component
+
+```bash
+ng g c componentname
+```
+
+---
+
+## What is SPA?
+
+Single Page Application.
+
+---
+
+## What is TypeScript?
+
+Superset of JavaScript.
+
+---
+
+## What is app.html?
+
+Main HTML file of application.
+
+---
+
+## Default Angular Port
+
+```text
+4200
+```
+
+---
+
+# IMPORTANT COMMANDS
+
+## Run Angular App
+
+```bash
+ng serve
+```
+
+---
+
+## Create Component
+
+```bash
+ng g c home
+```
+
+---
+
+## Install Angular CLI
+
+```bash
+npm install -g @angular/cli
+```
+
+---
+
+# COMMON ERRORS
+
+## ERROR:
+
+```text
+'ng' is not recognized
+```
+
+FIX:
+
+Restart terminal after Angular installation.
+
+---
+
+## ERROR:
+
+```text
+Port 4200 already in use
+```
+
+FIX:
+
+```bash
+ng serve --port 4201
+```
+
+---
+
+# OUTPUT
+
+You will see:
+
+* Home Component
+* About Component
+* Contact Component
+* Services Component
+
+on browser at:
+
+```text
+http://localhost:4200
+```
