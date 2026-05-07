@@ -1,0 +1,76 @@
+-------_SERVER.JS----
+const express = require("express");
+
+const app = express();
+
+const PORT = 3000;
+
+// Serve static files
+app.use(express.static("public"));
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
+
+
+---INDEX
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Website</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to NodeJS Static Website</h1>
+
+        <p>
+            This website is served using NodeJS and Express.
+        </p>
+
+        <button>Learn More</button>
+    </div>
+
+</body>
+</html>
+
+
+-----STYLE.CSS___
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+
+.container {
+    text-align: center;
+    margin-top: 150px;
+    color: white;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+p {
+    font-size: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    background-color: white;
+    color: #2193b0;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f1f1f1;
+}
