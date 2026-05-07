@@ -1,0 +1,279 @@
+# Step-by-Step to Push Code to GitHub (Very Simple)
+
+Assume your file name is:
+
+```text id="4m6r8v"
+index.html
+```
+
+---
+
+# STEP 1 — Create GitHub Account
+
+Go to:
+
+[GitHub Signup](https://github.com/signup?utm_source=chatgpt.com)
+
+Create account and login.
+
+---
+
+# STEP 2 — Install Git
+
+Download Git:
+
+[Download Git](https://git-scm.com/downloads?utm_source=chatgpt.com)
+
+Install normally:
+
+* Next
+* Next
+* Install
+
+---
+
+# STEP 3 — Open VS Code
+
+Open folder containing:
+
+```text id="oaqx1g"
+index.html
+```
+
+---
+
+# STEP 4 — Open Terminal in VS Code
+
+Menu:
+
+```text id="nshn0w"
+Terminal → New Terminal
+```
+
+---
+
+# STEP 5 — Initialize Git
+
+Run:
+
+```bash id="1v7u9j"
+git init
+```
+
+---
+
+# STEP 6 — Add Files
+
+Run:
+
+```bash id="wmp27r"
+git add .
+```
+
+---
+
+# STEP 7 — Commit Files
+
+Run:
+
+```bash id="sx1vul"
+git commit -m "Responsive website project"
+```
+
+---
+
+# STEP 8 — Create Repository on GitHub
+
+Go to:
+
+[GitHub](https://github.com?utm_source=chatgpt.com)
+
+Click:
+
+```text id="v0qqtt"
+New Repository
+```
+
+Repository Name:
+
+```text id="72r4lr"
+responsive-website
+```
+
+Click:
+
+```text id="2htl17"
+Create Repository
+```
+
+---
+
+# STEP 9 — Connect Local Project to GitHub
+
+Copy repository URL.
+
+Example:
+
+```bash id="dz1w7z"
+https://github.com/yourname/responsive-website.git
+```
+
+Run:
+
+```bash id="yhnw91"
+git remote add origin https://github.com/yourname/responsive-website.git
+```
+
+---
+
+# STEP 10 — Push Code to GitHub
+
+Run:
+
+```bash id="ifx77z"
+git branch -M main
+```
+
+Then:
+
+```bash id="4bdb83"
+git push -u origin main
+```
+
+---
+
+# IF ASKING USERNAME/PASSWORD
+
+GitHub now uses:
+
+* Personal Access Token (PAT)
+
+NOT normal password.
+
+---
+
+# STEP 11 — Generate GitHub Token
+
+Go to:
+
+[GitHub Tokens](https://github.com/settings/tokens?utm_source=chatgpt.com)
+
+Steps:
+
+1. Generate new token
+2. Select:
+
+   * repo
+3. Generate token
+4. Copy token
+
+Use:
+
+* Username = GitHub username
+* Password = token
+
+---
+
+# SUCCESS
+
+Your code is uploaded to GitHub ✅
+
+Repository link example:
+
+```text id="29r55p"
+https://github.com/yourname/responsive-website
+```
+
+---
+
+# COMMANDS ONLY (IMPORTANT FOR PRACTICAL)
+
+```bash id="g24py3"
+git init
+git add .
+git commit -m "Responsive website project"
+git branch -M main
+git remote add origin https://github.com/yourname/responsive-website.git
+git push -u origin main
+```
+
+---
+
+# Viva Questions
+
+## What is Git?
+
+Version control system.
+
+---
+
+## What is GitHub?
+
+Cloud platform to store Git repositories.
+
+---
+
+## What is Repository?
+
+Storage location for project code.
+
+---
+
+## What is Commit?
+
+Saving changes in Git.
+
+---
+
+## What is Push?
+
+Uploading local code to GitHub.
+
+---
+
+## Difference Between Git and GitHub?
+
+| Git                  | GitHub                  |
+| -------------------- | ----------------------- |
+| Version control tool | Online hosting platform |
+
+---
+
+## What is `git init`?
+
+Initializes Git repository.
+
+---
+
+## What is `git add .`?
+
+Adds files for commit.
+
+---
+
+## What is `git commit`?
+
+Saves changes locally.
+
+---
+
+## What is `git push`?
+
+Uploads code to GitHub.
+
+---
+
+## What is Branch?
+
+Separate line of development.
+
+---
+
+# Quick Practical Flow
+
+1. Create HTML file
+2. Open VS Code
+3. Open Terminal
+4. Run Git commands
+5. Push to GitHub
+6. Show repository in browser
