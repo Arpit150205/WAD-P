@@ -1,1 +1,494 @@
 
+# Create 4 APIs using NodeJS + ExpressJS + MongoDB (CRUD)
+
+We will create these APIs:
+
+1. CREATE → POST
+2. READ → GET
+3. UPDATE → PUT
+4. DELETE → DELETE
+
+---
+
+# STEP 1 — Create Project Folder
+
+Open terminal in VS Code.
+
+Run:
+
+```bash
+mkdir crud-api
+cd crud-api
+```
+
+---
+
+# STEP 2 — Initialize Node Project
+
+Run:
+
+```bash
+npm init -y
+```
+
+This creates `package.json`
+
+---
+
+# STEP 3 — Install Packages
+
+Run:
+
+```bash
+npm install express mongoose cors
+```
+
+Install nodemon:
+
+```bash
+npm install -g nodemon
+```
+
+OR
+
+```bash
+npm install --save-dev nodemon
+```
+
+---
+
+# STEP 4 — Create Files
+
+Create these files:
+
+```bash
+touch server.js
+touch model.js
+```
+
+Project structure:
+
+```text
+crud-api
+│
+├── node_modules
+├── package.json
+├── server.js
+└── model.js
+```
+
+---
+
+# STEP 5 — Start MongoDB
+
+## OPTION 1 (EASIEST) → MongoDB Atlas
+
+Go to:
+
+```text
+https://www.mongodb.com/cloud/atlas/register
+```
+
+1. Create free account
+2. Create cluster
+3. Click Connect
+4. Choose Drivers
+5. Copy connection string
+
+Example:
+
+```text
+mongodb+srv://username:password@cluster0.mongodb.net/test
+```
+
+Replace:
+
+* username
+* password
+
+---
+
+## OPTION 2 → Local MongoDB
+
+Start MongoDB service:
+
+### Mac
+
+```bash
+brew services start mongodb-community
+```
+
+### Windows
+
+Open MongoDB Compass or MongoDB service.
+
+Local URL:
+
+```text
+mongodb://127.0.0.1:27017/studentDB
+```
+
+---
+
+# STEP 6 — Add Code in `model.js`
+
+Paste this:
+
+```javascript
+const mongoose = require("mongoose");
+
+const StudentSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+    course: String
+});
+
+module.exports = mongoose.model("Student", StudentSchema);
+```
+
+---
+
+# STEP 7 — Add Code in `server.js`
+
+Paste FULL CODE:
+
+```javascript
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+const Student = require("./model");
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+
+// MongoDB Connection
+mongoose.connect("mongodb://127.0.0.1:27017/studentDB")
+.then(() => console.log("MongoDB Connected"))
+.catch((err) => console.log(err));
+
+
+// CREATE API
+app.post("/add", async (req, res) => {
+    try {
+        const student = new Student(req.body);
+        await student.save();
+        res.send(student);
+    } catch (err) {
+        res.send(err);
+    }
+});
+
+
+// READ API
+app.get("/students", async (req, res) => {
+    try {
+        const students = await Student.find();
+        res.send(students);
+    } catch (err) {
+        res.send(err);
+    }
+});
+
+
+// UPDATE API
+app.put("/update/:id", async (req, res) => {
+    try {
+        const student = await Student.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+
+        res.send(student);
+    } catch (err) {
+        res.send(err);
+    }
+});
+
+
+// DELETE API
+app.delete("/delete/:id", async (req, res) => {
+    try {
+        await Student.findByIdAndDelete(req.params.id);
+
+        res.send("Student Deleted");
+    } catch (err) {
+        res.send(err);
+    }
+});
+
+
+app.listen(3000, () => {
+    console.log("Server Running on Port 3000");
+});
+```
+
+---
+
+# STEP 8 — Run Project
+
+Run:
+
+```bash
+nodemon server.js
+```
+
+OR
+
+```bash
+node server.js
+```
+
+You should see:
+
+```text
+Server Running on Port 3000
+MongoDB Connected
+```
+
+---
+
+# STEP 9 — Test APIs
+
+---
+
+# CREATE API
+
+Method:
+
+```text
+POST
+```
+
+URL:
+
+```text
+http://localhost:3000/add
+```
+
+Body → JSON:
+
+```json
+{
+  "name": "Arpit",
+  "age": 21,
+  "course": "BTech"
+}
+```
+
+---
+
+# READ API
+
+Method:
+
+```text
+GET
+```
+
+URL:
+
+```text
+http://localhost:3000/students
+```
+
+---
+
+# UPDATE API
+
+Method:
+
+```text
+PUT
+```
+
+URL:
+
+```text
+http://localhost:3000/update/ID
+```
+
+Example Body:
+
+```json
+{
+  "age": 22
+}
+```
+
+Replace `ID` with MongoDB student `_id`
+
+---
+
+# DELETE API
+
+Method:
+
+```text
+DELETE
+```
+
+URL:
+
+```text
+http://localhost:3000/delete/ID
+```
+
+---
+
+# STEP 10 — How to Test Without Postman
+
+## OPTION 1 → Thunder Client in VS Code
+
+Install extension:
+
+```text
+Thunder Client
+```
+
+Then:
+
+* New Request
+* Select GET/POST/PUT/DELETE
+* Enter URL
+* Send
+
+---
+
+## OPTION 2 → Browser
+
+GET only works in browser:
+
+```text
+http://localhost:3000/students
+```
+
+---
+
+# IMPORTANT VIVA QUESTIONS
+
+## Theory Questions
+
+### What is NodeJS?
+
+JavaScript runtime environment.
+
+---
+
+### What is ExpressJS?
+
+Framework for NodeJS used to create server and APIs.
+
+---
+
+### What is MongoDB?
+
+NoSQL database storing data in JSON-like documents.
+
+---
+
+### What is CRUD?
+
+* Create
+* Read
+* Update
+* Delete
+
+---
+
+### What is API?
+
+Application Programming Interface used for communication.
+
+---
+
+### What is REST API?
+
+API using HTTP methods.
+
+---
+
+### HTTP Methods
+
+| Method | Work   |
+| ------ | ------ |
+| GET    | Read   |
+| POST   | Create |
+| PUT    | Update |
+| DELETE | Delete |
+
+---
+
+### What is Mongoose?
+
+ODM library for MongoDB and NodeJS.
+
+---
+
+### What is Middleware?
+
+Function executed between request and response.
+
+Example:
+
+```javascript
+app.use(express.json());
+```
+
+---
+
+### What is CORS?
+
+Allows frontend-backend communication.
+
+---
+
+# Important Commands
+
+## Run server
+
+```bash
+node server.js
+```
+
+## Run with nodemon
+
+```bash
+nodemon server.js
+```
+
+## Install packages
+
+```bash
+npm install express mongoose cors
+```
+
+---
+
+# OUTPUT
+
+When successful:
+
+```text
+Server Running on Port 3000
+MongoDB Connected
+```
+
+---
+
+# MOST IMPORTANT EXAM QUESTIONS
+
+1. Difference between SQL and MongoDB
+2. What is Express?
+3. What is middleware?
+4. Difference between PUT and POST
+5. What is REST API?
+6. What is NoSQL?
+7. What is JSON?
+8. Why use nodemon?
+9. What is localhost?
+10. What is port number?
